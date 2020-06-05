@@ -12,7 +12,8 @@ import { expenseInvoiceUrl, invoiceServiceURL } from '../../lib/url_helpers';
 const ExpenseInvoiceDownloadHelper = ({ children, expense, collective, onError }) => {
   const [isLoading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
-  const filename = `Expense-${expense.legacyId}-${collective?.slug}-invoice.pdf`;
+  const prettyDate = expense.createdAt.split('.')[0];
+  const filename = `Expense-${expense.legacyId}-${collective?.slug}-invoice-${prettyDate}.pdf`;
 
   return children({
     error,
